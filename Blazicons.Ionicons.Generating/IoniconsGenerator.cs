@@ -16,7 +16,7 @@ internal class IoniconsGenerator : ISourceGenerator
         taskFactory.Run(
             async () =>
             {
-                await downloader.Download().ConfigureAwait(true);
+                await downloader.Download(@"^src\/svg\/.*.svg$").ConfigureAwait(true);
             });
 
         var svgFolder = Path.Combine(downloader.ExtractedFolder, $"{downloader.RepoName}-{downloader.BranchName}", "src", "svg");

@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.Threading;
 namespace Blazicons.Bootstrap.Generating;
 
 [Generator]
-internal class FontAwesomeGenerator : ISourceGenerator
+internal class BootstrapGenerator : ISourceGenerator
 {
     public void Execute(GeneratorExecutionContext context)
     {
@@ -15,7 +15,7 @@ internal class FontAwesomeGenerator : ISourceGenerator
         taskFactory.Run(
             async () =>
             {
-                await downloader.Download().ConfigureAwait(true);
+                await downloader.Download(@"^icons\/.*.svg$").ConfigureAwait(true);
             });
 
         var svgFolder = Path.Combine(downloader.ExtractedFolder, $"{downloader.RepoName}-{downloader.BranchName}", "icons");

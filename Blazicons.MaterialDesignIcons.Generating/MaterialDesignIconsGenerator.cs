@@ -15,7 +15,7 @@ internal class MaterialDesignIconsGenerator : ISourceGenerator
         taskFactory.Run(
             async () =>
             {
-                await downloader.Download().ConfigureAwait(true);
+                await downloader.Download(@"^svg\/.*.svg$").ConfigureAwait(true);
             });
 
         var svgFolder = Path.Combine(downloader.ExtractedFolder, $"{downloader.RepoName}-{downloader.BranchName}", "svg");

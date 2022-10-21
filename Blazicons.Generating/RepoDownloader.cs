@@ -1,4 +1,5 @@
 ﻿using System.IO.Compression;
+using System.Text.RegularExpressions;
 
 namespace Blazicons.Generating;
 
@@ -32,9 +33,9 @@ public class RepoDownloader
 
     public string BranchName { get; }
 
-    public async Task Download()
+    public async Task Download(string entriesFilter = @"\.svg")
     {
-        var fileName = Path.GetFileNameWithoutExtension(Address.AbsolutePath);
+        var fileName = Path.GetFileName(Address.AbsolutePath);
 
         var bytes = await client.GetByteArrayAsync(Address).ConfigureAwait(false);
 
@@ -47,7 +48,22 @@ public class RepoDownloader
         var zipFileName = Path.Combine(RootFolder, fileName);
         File.WriteAllBytes(zipFileName, bytes);
 
-        ZipFile.ExtractToDirectory(zipFileName, ExtractedFolder);
+        using var archive = ZipFile.OpenRead(zipFileName);
+        var entries = archive.Entries.Where(x =>
+            !string.IsNullOrEmpty(x.Name)
+            && Regex.IsMatch(x.FullName.Substring(RepoName.Length + 1 + BranchName.Length +1), entriesFilter));
+
+        foreach (var entry in entries)
+        {
+            var extractedName = Path.Combine(ExtractedFolder, entry.FullName.Replace("/", "\\"));
+            var dir = Path.GetDirectoryName(extractedName);
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            entry.ExtractToFile(extractedName);
+        }
     }
 }
 

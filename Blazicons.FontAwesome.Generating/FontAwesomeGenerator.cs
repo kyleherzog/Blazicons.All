@@ -15,7 +15,7 @@ internal class FontAwesomeGenerator : ISourceGenerator
         taskFactory.Run(
             async () =>
             {
-                await downloader.Download().ConfigureAwait(true);
+                await downloader.Download(@"^svgs\/.*.svg$").ConfigureAwait(true);
             });
 
         var svgFolder = Path.Combine(downloader.ExtractedFolder, $"{downloader.RepoName}-{downloader.BranchName}", "svgs", "regular");

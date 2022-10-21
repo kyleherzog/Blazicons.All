@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Blazicons.Bootstrap\Blazicons.Bootstrap.csproj" />
+    <ProjectReference Include="..\Blazicons.FluentUI\Blazicons.FluentUI.csproj" />
     <ProjectReference Include="..\Blazicons.FontAwesome\Blazicons.FontAwesome.csproj" />
     <ProjectReference Include="..\Blazicons.Ionicons\Blazicons.Ionicons.csproj" />
     <ProjectReference Include="..\Blazicons.MaterialDesignIcons\Blazicons.MaterialDesignIcons.csproj" />

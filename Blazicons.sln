@@ -21,9 +21,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazicons.Bootstrap", "Blaz
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazicons.Bootstrap.Generating", "Blazicons.Bootstrap.Generating\Blazicons.Bootstrap.Generating.csproj", "{6F385455-3604-4CD5-BB00-4A1176AD6CB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazicons.Ionicons.Generating", "Blazicons.Ionicons.Generating\Blazicons.Ionicons.Generating.csproj", "{16EEE493-2C57-4B4D-8D2A-F5813C0F1136}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazicons.Ionicons.Generating", "Blazicons.Ionicons.Generating\Blazicons.Ionicons.Generating.csproj", "{16EEE493-2C57-4B4D-8D2A-F5813C0F1136}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazicons.Ionicons", "Blazicons.Ionicons\Blazicons.Ionicons.csproj", "{A6481B67-348F-4C8D-8FE9-DEA90B65811F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazicons.Ionicons", "Blazicons.Ionicons\Blazicons.Ionicons.csproj", "{A6481B67-348F-4C8D-8FE9-DEA90B65811F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazicons.FluentUI", "Blazicons.FluentUI\Blazicons.FluentUI.csproj", "{342E478F-5441-48C7-963E-33A1A5A5C808}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazicons.FluentUI.Generating", "Blazicons.FluentUI.Generating\Blazicons.FluentUI.Generating.csproj", "{224903CB-57D3-4A82-BCF3-21A68C1323B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +79,14 @@ Global
 		{A6481B67-348F-4C8D-8FE9-DEA90B65811F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6481B67-348F-4C8D-8FE9-DEA90B65811F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6481B67-348F-4C8D-8FE9-DEA90B65811F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{342E478F-5441-48C7-963E-33A1A5A5C808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{342E478F-5441-48C7-963E-33A1A5A5C808}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{342E478F-5441-48C7-963E-33A1A5A5C808}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{342E478F-5441-48C7-963E-33A1A5A5C808}.Release|Any CPU.Build.0 = Release|Any CPU
+		{224903CB-57D3-4A82-BCF3-21A68C1323B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{224903CB-57D3-4A82-BCF3-21A68C1323B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{224903CB-57D3-4A82-BCF3-21A68C1323B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{224903CB-57D3-4A82-BCF3-21A68C1323B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
