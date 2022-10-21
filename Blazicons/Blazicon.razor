@@ -1,0 +1,6 @@
+﻿@if (Svg is not null)
+{
+    <svg viewBox="@Svg.ViewBox" @attributes="Attributes">
+        @(new MarkupString(Svg.Content))
+    </svg>
+}
