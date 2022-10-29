@@ -13,7 +13,8 @@ public static class GeneratorExecutionContextExtensions
         string className,
         string svgFolder,
         string searchPattern = "*.svg",
-        Func<string, string>? propertyNameFromFileName = null
+        Func<string, string>? propertyNameFromFileName = null,
+        Func<string, bool>? isFileNameOk = null
         )
     {
         propertyNameFromFileName ??= GetMemberName;
@@ -27,6 +28,11 @@ public static class GeneratorExecutionContextExtensions
         builder.AppendLine("{");
 
         var files = Directory.GetFiles(svgFolder, searchPattern, SearchOption.AllDirectories);
+
+        if (isFileNameOk is not null)
+        {
+            files = files.Where(x => isFileNameOk(x)).ToArray();
+        }
 
         foreach (var file in files)
         {
