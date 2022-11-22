@@ -9,6 +9,20 @@
 <div><Blazicon Svg="Ionicon.LogoIonic"></Blazicon> Ionicons</div>
 <div><Blazicon Svg="FluentUiFilledIcon.Fluent"></Blazicon> Fluent UI</div>
 
-<Virtualize Context="icon" Items="Icons">
-    <div><Blazicon Svg="icon.Value"></Blazicon>@icon.Key</div>
-</Virtualize>
+@*<div class="row row-cols-1 row-cols-lg-6">
+    <Virtualize Context="icon" Items="Icons">
+        <div class="col">
+            <div class="card"><Blazicon Svg="icon.Value"></Blazicon>@icon.Key</div>
+       </div>
+    </Virtualize>
+</div>*@
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xl-6">
+    @foreach (var icon in Icons)
+    {
+        <div class="col mb-3 text-center">
+            <div style="font-size: 300%"><Blazicon Svg="@icon.Value"></Blazicon></div>
+            <span class="text-muted small">@icon.Key</span>
+        </div>
+    }
+</div>
