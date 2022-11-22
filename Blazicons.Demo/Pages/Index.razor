@@ -21,7 +21,7 @@
     @foreach (var icon in Icons)
     {
         <div class="col mb-3 text-center">
-            <div style="font-size: 300%"><Blazicon Svg="@icon.Value"></Blazicon></div>
+            <div style="font-size: 300%"><Blazicon Svg="@icon.Value" style="vertical-align:bottom"></Blazicon></div>
             <span class="text-muted small">@icon.Key</span>
         </div>
     }
