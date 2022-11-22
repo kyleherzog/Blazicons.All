@@ -34,18 +34,31 @@ public static class GeneratorExecutionContextExtensions
             files = files.Where(x => isFileNameOk(x)).ToArray();
         }
 
+        var propertyNames = new List<string>();
         foreach (var file in files)
         {
             var svg = File.ReadAllText(Path.Combine(svgFolder, file));
             var svgString = ScrubSvg(svg);
             var viewBox = GetViewBox(svg);
-            builder.Append($"public static SvgIcon {ScrubPropertyName(propertyNameFromFileName(file))} => SvgIcon.FromContent(\"{svgString}\"");
+            var propertyName = ScrubPropertyName(propertyNameFromFileName(file));
+            propertyNames.Add(propertyName);
+            builder.Append($"public static SvgIcon {propertyName} => SvgIcon.FromContent(\"{svgString}\"");
             if (!string.IsNullOrEmpty(viewBox))
             {
                 builder.Append($", \"{viewBox}\"");
             }
             builder.AppendLine(");");
         }
+
+        //builder.AppendLine("public static Dictionary<string, SvgIcon> All =>");
+        //builder.AppendLine("new()");
+        //builder.AppendLine("{");
+        //foreach (var propertyName in propertyNames)
+        //{
+        //    builder.AppendLine($"{{\"{propertyName}\", {className}.{propertyName} }},");
+        //}
+        //builder.AppendLine("};");
+
 
         builder.AppendLine("}");
         context.AddSource($"{className}.g.cs", builder.ToString());
