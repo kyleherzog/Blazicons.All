@@ -9,20 +9,23 @@
 <div><Blazicon Svg="Ionicon.LogoIonic"></Blazicon> Ionicons</div>
 <div><Blazicon Svg="FluentUiFilledIcon.Fluent"></Blazicon> Fluent UI</div>
 
-@*<div class="row row-cols-1 row-cols-lg-6">
-    <Virtualize Context="icon" Items="Icons">
-        <div class="col">
-            <div class="card"><Blazicon Svg="icon.Value"></Blazicon>@icon.Key</div>
-       </div>
-    </Virtualize>
-</div>*@
+<EditForm Model="Search">
+    <label for="SearchQuery" class="form-label">Search</label>
+    <input id="SearchQuery" class="form-control" @bind-value="@Search.Query" @bind-value:event="oninput"></input>
+</EditForm>
 
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xl-6">
-    @foreach (var icon in Icons)
+<div class="row icons-area">
+    <Virtualize Items="FilteredIcons" Context="icon">
+        <div class="icon-tile col-lg-1 col-md-2 col-sm-3 mb-3 text-center">
+            <div style="font-size: 300%"><Blazicon Svg="icon.Value" style="vertical-align:bottom"></Blazicon></div>
+            <span class="text-muted small">@icon.Key</span>
+        </div>
+    </Virtualize>
+@*    @foreach (var icon in FilteredIcons)
     {
-        <div class="col mb-3 text-center">
+        <div class="icon-tile col-lg-1 col-md-2 col-sm-3 mb-3 text-center">
             <div style="font-size: 300%"><Blazicon Svg="@icon.Value" style="vertical-align:bottom"></Blazicon></div>
             <span class="text-muted small">@icon.Key</span>
         </div>
-    }
+    }*@
 </div>
