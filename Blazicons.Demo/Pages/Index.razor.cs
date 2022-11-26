@@ -4,9 +4,9 @@ namespace Blazicons.Demo.Pages;
 
 public partial class Index
 {
-    public IDictionary<string, SvgIcon> Icons { get; set; } = new Dictionary<string, SvgIcon>();
+    public IList<IconEntry> Icons { get; } = new List<IconEntry>();
 
-    public IDictionary<string, SvgIcon> FilteredIcons
+    public IList<IconEntry> FilteredIcons
     {
         get
         {
@@ -15,7 +15,7 @@ public partial class Index
                 return Icons;
             }
 
-            return Icons.Where(x => x.Key.Contains(Search.Query, StringComparison.OrdinalIgnoreCase)).ToDictionary(x => x.Key, x => x.Value);
+            return Icons.Where(x => x.Name.Contains(Search.Query, StringComparison.OrdinalIgnoreCase)).ToList();
         }
     }
 
@@ -23,15 +23,35 @@ public partial class Index
 
     protected override Task OnInitializedAsync()
     {
-        var type = typeof(Blazicons.MdiIcon);
+        AddLibraryIcons(typeof(MdiIcon));
+        AddLibraryIcons(typeof(FontAwesomeRegularIcon));
+        AddLibraryIcons(typeof(FontAwesomeSolidIcon));
+        AddLibraryIcons(typeof(BootstrapIcon));
+        AddLibraryIcons(typeof(GoogleMaterialOutlinedIcon));
+        AddLibraryIcons(typeof(GoogleMaterialFilledIcon));
+        AddLibraryIcons(typeof(GoogleMaterialRoundIcon));
+        AddLibraryIcons(typeof(GoogleMaterialSharpIcon));
+        AddLibraryIcons(typeof(GoogleMaterialTwoToneIcon));
+        AddLibraryIcons(typeof(Ionicon));
+        AddLibraryIcons(typeof(FluentUiIcon));
+        AddLibraryIcons(typeof(FluentUiFilledIcon));
+
+        return base.OnInitializedAsync();
+    }
+
+    private void AddLibraryIcons(Type type)
+    {
         var properties = type.GetProperties();
 
         foreach (var property in properties)
         {
             var icon = (SvgIcon)property.GetValue(null);
-            Icons.Add(property.Name, icon);
+            Icons.Add(new IconEntry
+            {
+                Name = property.Name,
+                Icon = icon,
+                Library = type.Name,
+            });
         }
-
-        return base.OnInitializedAsync();
     }
 }

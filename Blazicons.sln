@@ -29,9 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazicons.FluentUI", "Blazi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazicons.FluentUI.Generating", "Blazicons.FluentUI.Generating\Blazicons.FluentUI.Generating.csproj", "{224903CB-57D3-4A82-BCF3-21A68C1323B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazicons.GoogleMaterialDesign", "Blazicons.GoogleMaterialDesign\Blazicons.GoogleMaterialDesign.csproj", "{80E9626E-4773-4E49-B006-96A1230F9143}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazicons.GoogleMaterialDesign", "Blazicons.GoogleMaterialDesign\Blazicons.GoogleMaterialDesign.csproj", "{80E9626E-4773-4E49-B006-96A1230F9143}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazicons.GoogleMaterialDesign.Generating", "Blazicons.GoogleMaterialDesign.Generating\Blazicons.GoogleMaterialDesign.Generating.csproj", "{55617BB4-05AC-47FF-8075-31B2F073AB57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazicons.GoogleMaterialDesign.Generating", "Blazicons.GoogleMaterialDesign.Generating\Blazicons.GoogleMaterialDesign.Generating.csproj", "{55617BB4-05AC-47FF-8075-31B2F073AB57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

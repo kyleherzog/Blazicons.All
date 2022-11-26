@@ -2,30 +2,43 @@
 
 <PageTitle>Index</PageTitle>
 
-<div><Blazicon Svg="MdiIcon.VectorSquare"></Blazicon> Material Design Icons</div>
-<div><Blazicon Svg="FontAwesomeSolidIcon.FontAwesome"></Blazicon> Font Awesome</div>
-<div><Blazicon Svg="BootstrapIcon.BootstrapFill"></Blazicon> Bootstrap</div>
-<div><Blazicon Svg="GoogleMaterialFilledIcon.DesignServices"></Blazicon> Google Material Design</div>
-<div><Blazicon Svg="Ionicon.LogoIonic"></Blazicon> Ionicons</div>
-<div><Blazicon Svg="FluentUiFilledIcon.Fluent"></Blazicon> Fluent UI</div>
+<main class="d-flex flex-nowrap align-items-stretch">
+    <div class="p-3 flex-shrink-0 text-light bg-dark" style="overflow-y: auto;">
+        <h1>Blazicons</h1>
 
-<EditForm Model="Search">
-    <label for="SearchQuery" class="form-label">Search</label>
-    <input id="SearchQuery" class="form-control" @bind-value="@Search.Query" @bind-value:event="oninput"></input>
-</EditForm>
+        <EditForm Model="Search">
+            <div class="mb-3">
+                <input type="search" placeholder="Search..." id="SearchQuery" class="form-control" @bind-value="@Search.Query" @bind-value:event="oninput" />
+            </div>
+        </EditForm>
 
-<div class="row icons-area">
-    <Virtualize Items="FilteredIcons" Context="icon">
-        <div class="icon-tile col-lg-1 col-md-2 col-sm-3 mb-3 text-center">
-            <div style="font-size: 300%"><Blazicon Svg="icon.Value" style="vertical-align:bottom"></Blazicon></div>
-            <span class="text-muted small">@icon.Key</span>
+        <div class="btn-group-vertical w-100" role="group">
+            <FontLibrarySelection IsSelected="true"><Blazicon Svg="MdiIcon.FilterOff"></Blazicon> All Icon Libraries</FontLibrarySelection>
+            <FontLibrarySelection><Blazicon Svg="MdiIcon.VectorSquare"></Blazicon> Material Design Icons</FontLibrarySelection>
+            <FontLibrarySelection><Blazicon Svg="FontAwesomeRegularIcon.FontAwesome"></Blazicon> Font Awesome - Regular</FontLibrarySelection>
+            <FontLibrarySelection><Blazicon Svg="FontAwesomeSolidIcon.FontAwesome"></Blazicon> Font Awesome - Solid</FontLibrarySelection>
+            <FontLibrarySelection><Blazicon Svg="BootstrapIcon.BootstrapFill"></Blazicon> Bootstrap</FontLibrarySelection>
+            <FontLibrarySelection><Blazicon Svg="GoogleMaterialOutlinedIcon.DesignServices"></Blazicon> Google Material - Outlined</FontLibrarySelection>
+            <FontLibrarySelection><Blazicon Svg="GoogleMaterialFilledIcon.DesignServices"></Blazicon> Google Material - Filled</FontLibrarySelection>
+            <FontLibrarySelection><Blazicon Svg="GoogleMaterialRoundIcon.DesignServices"></Blazicon> Google Material - Round</FontLibrarySelection>
+            <FontLibrarySelection><Blazicon Svg="GoogleMaterialSharpIcon.DesignServices"></Blazicon> Google Material - Sharp</FontLibrarySelection>
+            <FontLibrarySelection><Blazicon Svg="GoogleMaterialTwoToneIcon.DesignServices"></Blazicon> Google Material - Two Tone</FontLibrarySelection>
+            <FontLibrarySelection><Blazicon Svg="Ionicon.LogoIonic"></Blazicon> Ionicons</FontLibrarySelection>
+            <FontLibrarySelection><Blazicon Svg="FluentUiIcon.Fluent"></Blazicon> Fluent UI</FontLibrarySelection>
+            <FontLibrarySelection><Blazicon Svg="FluentUiFilledIcon.Fluent"></Blazicon> Fluent UI - Filled</FontLibrarySelection>
         </div>
-    </Virtualize>
-@*    @foreach (var icon in FilteredIcons)
-    {
-        <div class="icon-tile col-lg-1 col-md-2 col-sm-3 mb-3 text-center">
-            <div style="font-size: 300%"><Blazicon Svg="@icon.Value" style="vertical-align:bottom"></Blazicon></div>
-            <span class="text-muted small">@icon.Key</span>
+
+    </div>
+    <div style="overflow-y: auto;">
+        <div class="row icons-area">
+            <Virtualize Items="FilteredIcons" Context="icon" OverscanCount="144">
+                <div class="icon-tile col-lg-1 col-md-2 col-sm-3 mb-3 text-center" title="@icon.Code">
+                    <div style="font-size: 300%"><Blazicon Svg="icon.Icon" style="vertical-align:bottom"></Blazicon></div>
+                    <span class="text-muted small">@icon.Name</span>
+                </div>
+            </Virtualize>
         </div>
-    }*@
-</div>
+    </div>
+</main>
+
+
