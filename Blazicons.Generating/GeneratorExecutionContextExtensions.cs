@@ -80,6 +80,7 @@ public static class GeneratorExecutionContextExtensions
     {
         svg = Regex.Replace(svg, @"<\/?svg[^>]*>", string.Empty);
         svg = Regex.Replace(svg, @"<!--(.*?)-->", string.Empty);
+        svg = Regex.Replace(svg, "fill=\"[^\"]*\"", string.Empty);
         svg = svg.Replace("\n", string.Empty).Replace("\r", string.Empty);
         return svg.Replace("\\", "\\\\").Replace("\"", "\\\"").Trim();
     }
