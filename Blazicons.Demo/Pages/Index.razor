@@ -11,26 +11,31 @@
                 <input type="search" placeholder="Search..." id="SearchQuery" class="form-control" @bind-value="@Search.Query" @bind-value:event="oninput" />
             </div>
         </EditForm>
-
-        <div class="btn-group-vertical w-100" role="group">
-            <FontLibrarySelection IsSelected="true"><Blazicon Svg="MdiIcon.FilterOff"></Blazicon> All Icon Libraries</FontLibrarySelection>
-            <FontLibrarySelection><Blazicon Svg="MdiIcon.VectorSquare"></Blazicon> Material Design Icons</FontLibrarySelection>
-            <FontLibrarySelection><Blazicon Svg="FontAwesomeRegularIcon.FontAwesome"></Blazicon> Font Awesome - Regular</FontLibrarySelection>
-            <FontLibrarySelection><Blazicon Svg="FontAwesomeSolidIcon.FontAwesome"></Blazicon> Font Awesome - Solid</FontLibrarySelection>
-            <FontLibrarySelection><Blazicon Svg="BootstrapIcon.BootstrapFill"></Blazicon> Bootstrap</FontLibrarySelection>
-            <FontLibrarySelection><Blazicon Svg="GoogleMaterialOutlinedIcon.DesignServices"></Blazicon> Google Material - Outlined</FontLibrarySelection>
-            <FontLibrarySelection><Blazicon Svg="GoogleMaterialFilledIcon.DesignServices"></Blazicon> Google Material - Filled</FontLibrarySelection>
-            <FontLibrarySelection><Blazicon Svg="GoogleMaterialRoundIcon.DesignServices"></Blazicon> Google Material - Round</FontLibrarySelection>
-            <FontLibrarySelection><Blazicon Svg="GoogleMaterialSharpIcon.DesignServices"></Blazicon> Google Material - Sharp</FontLibrarySelection>
-            <FontLibrarySelection><Blazicon Svg="GoogleMaterialTwoToneIcon.DesignServices"></Blazicon> Google Material - Two Tone</FontLibrarySelection>
-            <FontLibrarySelection><Blazicon Svg="Ionicon.LogoIonic"></Blazicon> Ionicons</FontLibrarySelection>
-            <FontLibrarySelection><Blazicon Svg="FluentUiIcon.Fluent"></Blazicon> Fluent UI</FontLibrarySelection>
-            <FontLibrarySelection><Blazicon Svg="FluentUiFilledIcon.Fluent"></Blazicon> Fluent UI - Filled</FontLibrarySelection>
-        </div>
-
+        <CascadingValue Value="this">
+            <div class="btn-group-vertical w-100" role="group">
+                <FontLibrarySelection IsSelected="true"><Blazicon Svg="MdiIcon.FilterOff"></Blazicon> All Icon Libraries</FontLibrarySelection>
+                <FontLibrarySelection Name="MdiIcon"><Blazicon Svg="MdiIcon.VectorSquare"></Blazicon> Material Design Icons</FontLibrarySelection>
+                <FontLibrarySelection Name="FontAwesomeRegularIcon"><Blazicon Svg="FontAwesomeRegularIcon.FontAwesome"></Blazicon> Font Awesome - Regular</FontLibrarySelection>
+                <FontLibrarySelection Name="FontAwesomeSolidIcon"><Blazicon Svg="FontAwesomeSolidIcon.FontAwesome"></Blazicon> Font Awesome - Solid</FontLibrarySelection>
+                <FontLibrarySelection Name="BootstrapIcon"><Blazicon Svg="BootstrapIcon.BootstrapFill"></Blazicon> Bootstrap</FontLibrarySelection>
+                <FontLibrarySelection Name="GoogleMaterialOutlinedIcon"><Blazicon Svg="GoogleMaterialOutlinedIcon.DesignServices"></Blazicon> Google Material - Outlined</FontLibrarySelection>
+                <FontLibrarySelection Name="GoogleMaterialFilledIcon"><Blazicon Svg="GoogleMaterialFilledIcon.DesignServices"></Blazicon> Google Material - Filled</FontLibrarySelection>
+                <FontLibrarySelection Name="GoogleMaterialRoundIcon"><Blazicon Svg="GoogleMaterialRoundIcon.DesignServices"></Blazicon> Google Material - Round</FontLibrarySelection>
+                <FontLibrarySelection Name="GoogleMaterialSharpIcon"><Blazicon Svg="GoogleMaterialSharpIcon.DesignServices"></Blazicon> Google Material - Sharp</FontLibrarySelection>
+                <FontLibrarySelection Name="GoogleMaterialTwoToneIcon"><Blazicon Svg="GoogleMaterialTwoToneIcon.DesignServices"></Blazicon> Google Material - Two Tone</FontLibrarySelection>
+                <FontLibrarySelection Name="Ionicon"><Blazicon Svg="Ionicon.LogoIonic"></Blazicon> Ionicons</FontLibrarySelection>
+                <FontLibrarySelection Name="FluentUiIcon"><Blazicon Svg="FluentUiIcon.Fluent"></Blazicon> Fluent UI</FontLibrarySelection>
+                <FontLibrarySelection Name="FluentUiFilledIcon"><Blazicon Svg="FluentUiFilledIcon.Fluent"></Blazicon> Fluent UI - Filled</FontLibrarySelection>
+            </div>
+        </CascadingValue>
     </div>
     <div class="flex-fill container-fluid" style="overflow-y: auto;">
         <div class="row icons-area">
+            @if(!FilteredIcons.Any())
+            {
+                <div class="pt-3">--No icons found--</div>
+            }
+
             <Virtualize Items="FilteredIcons" Context="icon" OverscanCount="144">
                 <div class="icon-tile col-lg-1 col-md-2 col-sm-3 mb-3 text-center" title="@icon.Code">
                     <div style="font-size: 300%"><Blazicon Svg="icon.Icon" style="vertical-align:bottom"></Blazicon></div>

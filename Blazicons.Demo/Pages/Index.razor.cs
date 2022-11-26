@@ -4,6 +4,25 @@ namespace Blazicons.Demo.Pages;
 
 public partial class Index
 {
+    private string? libraryFilter;
+
+    public string? LibraryFilter
+    {
+        get
+        {
+            return libraryFilter;
+        }
+
+        set
+        {
+            if (libraryFilter != value)
+            {
+                libraryFilter = value;
+                StateHasChanged();
+            }
+        }
+    }
+
     public IList<IconEntry> Icons { get; } = new List<IconEntry>();
 
     public IList<IconEntry> FilteredIcons
@@ -15,7 +34,13 @@ public partial class Index
                 return Icons;
             }
 
-            return Icons.Where(x => x.Name.Contains(Search.Query, StringComparison.OrdinalIgnoreCase)).ToList();
+            var result = Icons.Where(x => x.Name.Contains(Search.Query, StringComparison.OrdinalIgnoreCase));
+            if (!string.IsNullOrEmpty(LibraryFilter))
+            {
+                result = result.Where(x => x.Library == LibraryFilter);
+            }
+
+            return result.ToList();
         }
     }
 
