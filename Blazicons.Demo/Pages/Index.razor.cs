@@ -1,10 +1,75 @@
-﻿using Blazicons.Demo.Models;
+﻿using System.Reactive.Linq;
+using Blazicons.Demo.Models;
 
 namespace Blazicons.Demo.Pages;
 
-public partial class Index
+public partial class Index : IDisposable
 {
+    private bool hasDisposed;
     private string? libraryFilter;
+    private IDisposable? queryChangedSubscription;
+
+    public Index()
+    {
+        Search = new IconSearchModel();
+        SubscribeToChanges();
+    }
+
+    private void SubscribeToChanges()
+    {
+        queryChangedSubscription = Search.WhenPropertyChanged.Throttle(TimeSpan.FromMilliseconds(400)).Subscribe(x => ActiveQuery = Search.Query);
+    }
+
+    private void UnsubsribeFromChanges()
+    {
+        queryChangedSubscription?.Dispose();
+    }
+
+    ~Index()
+    {
+        // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        Dispose(disposing: false);
+    }
+
+    public IList<IconEntry> FilteredIcons
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(ActiveQuery))
+            {
+                return Icons;
+            }
+
+            var result = Icons.Where(x => x.Name.Contains(ActiveQuery, StringComparison.OrdinalIgnoreCase));
+            if (!string.IsNullOrEmpty(LibraryFilter))
+            {
+                result = result.Where(x => x.Library == LibraryFilter);
+            }
+
+            return result.ToList();
+        }
+    }
+
+    private string? activeQuery;
+
+    public string? ActiveQuery
+    {
+        get
+        {
+            return activeQuery;
+        }
+
+        set
+        {
+            if (activeQuery != value)
+            {
+                activeQuery = value;
+                _ = InvokeAsync(StateHasChanged);
+            }
+        }
+    }
+
+    public IList<IconEntry> Icons { get; } = new List<IconEntry>();
 
     public string? LibraryFilter
     {
@@ -23,28 +88,27 @@ public partial class Index
         }
     }
 
-    public IList<IconEntry> Icons { get; } = new List<IconEntry>();
+    public IconSearchModel Search { get; }
 
-    public IList<IconEntry> FilteredIcons
+    public void Dispose()
     {
-        get
-        {
-            if (string.IsNullOrEmpty(Search.Query))
-            {
-                return Icons;
-            }
-
-            var result = Icons.Where(x => x.Name.Contains(Search.Query, StringComparison.OrdinalIgnoreCase));
-            if (!string.IsNullOrEmpty(LibraryFilter))
-            {
-                result = result.Where(x => x.Library == LibraryFilter);
-            }
-
-            return result.ToList();
-        }
+        // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        Dispose(disposing: true);
+        GC.SuppressFinalize(this);
     }
 
-    public IconSearchModel Search { get; } = new IconSearchModel();
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!hasDisposed)
+        {
+            if (disposing)
+            {
+                UnsubsribeFromChanges();
+            }
+
+            hasDisposed = true;
+        }
+    }
 
     protected override Task OnInitializedAsync()
     {
