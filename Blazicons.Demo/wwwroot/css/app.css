@@ -51,4 +51,13 @@ h1:focus {
 .icons-area .icon-tile {
   font-size: 12px;
   overflow: hidden;
+  background-color: transparent;
+  border-style: solid;
+  border-width: 2px;
+  border-color: transparent;
+  border-radius: 0.375rem;
+}
+.icons-area .icon-tile:hover {
+  border-color: rgba(0, 0, 0, 0.125);
+  background-color: #f8f9fa;
 }

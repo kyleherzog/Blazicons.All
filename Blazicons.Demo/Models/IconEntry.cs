@@ -2,11 +2,13 @@
 
 public class IconEntry
 {
-    public string Name { get; set; }
+    public string Assembly { get; set; } = string.Empty;
 
-    public SvgIcon Icon { get; set; }
+    public string Name { get; set; } = string.Empty;
 
-    public string Library { get; set; }
+    public SvgIcon Icon { get; set; } = SvgIcon.FromContent(string.Empty);
+
+    public string Library { get; set; } = string.Empty;
 
     public string Code => $"{Library}.{Name}";
 }

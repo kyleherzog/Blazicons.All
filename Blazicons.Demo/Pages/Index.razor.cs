@@ -1,5 +1,8 @@
 ﻿using System.Reactive.Linq;
 using Blazicons.Demo.Models;
+using CodeCasing;
+using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace Blazicons.Demo.Pages;
 
@@ -31,16 +34,24 @@ public partial class Index : IDisposable
         Dispose(disposing: false);
     }
 
+    public string ActiveIconDisplayName => ActiveIcon?.Name.ExpandToTitleCase() ?? string.Empty;
+
+    public IconEntry ActiveIcon { get; set; } = new IconEntry();
+
+    public string ActiveIconNugetAddress => $"https://www.nuget.org/packages/Blazicons.{ActiveIcon.Assembly}";
+
+    public bool IsShowingModal { get; set; }
+
     public IList<IconEntry> FilteredIcons
     {
         get
         {
-            if (string.IsNullOrEmpty(ActiveQuery))
+            var result = Icons.AsEnumerable();
+            if (!string.IsNullOrEmpty(ActiveQuery))
             {
-                return Icons;
+                result = Icons.Where(x => x.Name.Contains(ActiveQuery, StringComparison.OrdinalIgnoreCase));
             }
 
-            var result = Icons.Where(x => x.Name.Contains(ActiveQuery, StringComparison.OrdinalIgnoreCase));
             if (!string.IsNullOrEmpty(LibraryFilter))
             {
                 result = result.Where(x => x.Library == LibraryFilter);
@@ -140,7 +151,24 @@ public partial class Index : IDisposable
                 Name = property.Name,
                 Icon = icon,
                 Library = type.Name,
+                Assembly = type.Assembly?.GetName().Name ?? string.Empty,
             });
         }
+    }
+
+    private void HideModal()
+    {
+        IsShowingModal = false;
+    }
+
+    private void ShowModal()
+    {
+        IsShowingModal = true;
+    }
+
+    private void ShowIconDetails(IconEntry entry)
+    {
+        ActiveIcon = entry;
+        ShowModal();
     }
 }

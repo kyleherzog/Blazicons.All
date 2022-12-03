@@ -37,13 +37,52 @@
             }
 
             <Virtualize Items="FilteredIcons" Context="icon" OverscanCount="144">
-                <div class="icon-tile col-lg-1 col-md-2 col-sm-3 mb-3 text-center" title="@icon.Code">
-                    <div style="font-size: 300%"><Blazicon Svg="icon.Icon" style="vertical-align:bottom"></Blazicon></div>
-                    <span class="text-muted small">@icon.Name</span>
-                </div>
+                <button class="icon-tile col-lg-1 col-md-2 col-sm-3 mb-3 text-center" title="@icon.Code" @onclick="() => ShowIconDetails(icon)">
+
+                    <div style="font-size: 300%; line-height: 1;"><Blazicon Svg="icon.Icon"></Blazicon></div>
+                    <div class="text-muted small text-truncate">@icon.Name</div>
+                </button>
             </Virtualize>
         </div>
     </div>
 </main>
+
+
+@if (IsShowingModal)
+{
+    <div id="active-icon-modal" class="modal fade show" style="display: block;" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                    @ActiveIconDisplayName
+                    <button type="button" class="btn-close" aria-label="Close" @onclick="HideModal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <span style="font-size: 300%; line-height: 1;">
+                            <Blazicon Svg="ActiveIcon.Icon"></Blazicon>
+                        </span>
+                        @ActiveIcon.Code
+                    </div>
+
+                    <div class="mb-3">
+                        <strong>Package</strong>
+                        <div>
+                            <a href="@ActiveIconNugetAddress">@ActiveIcon.Assembly</a>
+                        </div>
+                    </div>
+
+                    <strong>Example</strong>
+                    <div>
+                        <code>&lt;Blazicon Svg="@ActiveIcon.Code"&gt;&lt;/Blazicon&gt;</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="modal-backdrop fade show" style="display: block;"></a>
+}
+
+
 
 

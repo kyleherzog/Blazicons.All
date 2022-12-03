@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <PackageReference Include="BindingBits" Version="1.5.390" />
+    <PackageReference Include="CodeCasing" Version="2.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.0" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.175" />
