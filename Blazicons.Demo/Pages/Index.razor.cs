@@ -40,6 +40,12 @@ public partial class Index : IDisposable
 
     public string ActiveIconNugetAddress => $"https://www.nuget.org/packages/Blazicons.{ActiveIcon.Assembly}";
 
+    public string ActiveIconCopyNameLink => $"javascript:navigator.clipboard.writeText('{ActiveIcon.Code}');";
+
+    public string ActiveIconExample => $"<Blazicon Svg=\"{ActiveIcon.Code}\"></Blazicon>";
+
+    public string ActiveIconCopyExampleLink => $"javascript:navigator.clipboard.writeText('{ActiveIconExample}');";
+
     public bool IsShowingModal { get; set; }
 
     public IList<IconEntry> FilteredIcons
