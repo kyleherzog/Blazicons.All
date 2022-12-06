@@ -30,10 +30,10 @@
         </CascadingValue>
     </div>
     <div class="flex-fill container-fluid" style="overflow-y: auto;">
-        <div class="row icons-area">
+        <div class="row icons-area pt-3">
             @if(!FilteredIcons.Any())
             {
-                <div class="pt-3">--No icons found--</div>
+                <div>--No icons found--</div>
             }
 
             <Virtualize Items="FilteredIcons" Context="icon" OverscanCount="144">
