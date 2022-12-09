@@ -16,6 +16,32 @@ main {
     overflow-y: hidden;
 }
 
+.navbar {
+    line-height: 1;
+
+    ul {
+        height: 100%;
+        font-size: 150%;
+
+        li {
+
+            .nav-link {
+                padding-top: 0;
+                padding-bottom: 0;
+                height: 100%;
+
+                svg {
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+.navbar-brand {
+    font-size: 225%;
+
+}
+
 h1:focus {
     outline: none;
 }

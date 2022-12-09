@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <LangVersion>11.0</LangVersion>
@@ -8,6 +8,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\logo.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Logo.svg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="compilerconfig.json" />
@@ -27,5 +36,18 @@
     <ProjectReference Include="..\Blazicons.GoogleMaterialDesign\Blazicons.GoogleMaterialDesign.csproj" />
     <ProjectReference Include="..\Blazicons.Ionicons\Blazicons.Ionicons.csproj" />
     <ProjectReference Include="..\Blazicons.MaterialDesignIcons\Blazicons.MaterialDesignIcons.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

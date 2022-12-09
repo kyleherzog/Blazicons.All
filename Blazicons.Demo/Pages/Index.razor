@@ -4,8 +4,6 @@
 
 <main class="d-flex flex-nowrap align-items-stretch">
     <div class="p-3 flex-shrink-0 text-light bg-dark" style="overflow-y: auto;">
-        <h1>Blazicons</h1>
-
         <EditForm Model="Search">
             <div class="mb-3">
                 <input type="search" placeholder="Search..." id="SearchQuery" class="form-control" @bind-value="@Search.Query" @bind-value:event="oninput" />
