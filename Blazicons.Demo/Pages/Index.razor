@@ -3,7 +3,7 @@
 <PageTitle>Index</PageTitle>
 
 <main class="d-flex flex-nowrap align-items-stretch">
-    <div class="p-3 flex-shrink-0 text-light bg-dark" style="overflow-y: auto;">
+    <div class="p-3 flex-shrink-0 text-light bg-dark border-end border-secondary" style="overflow-y: auto;">
         <EditForm Model="Search">
             <div class="mb-3">
                 <input type="search" placeholder="Search..." id="SearchQuery" class="form-control" @bind-value="@Search.Query" @bind-value:event="oninput" />
@@ -27,7 +27,7 @@
             </div>
         </CascadingValue>
     </div>
-    <div class="flex-fill container-fluid" style="overflow-y: auto;">
+    <div class="flex-fill container-fluid text-light bg-dark" style="overflow-y: auto;">
         <div class="row icons-area pt-3">
             @if(!FilteredIcons.Any())
             {
@@ -35,10 +35,10 @@
             }
 
             <Virtualize Items="FilteredIcons" Context="icon" OverscanCount="144">
-                <button class="icon-tile col-lg-1 col-md-2 col-sm-3 mb-3 text-center" title="@icon.Code" @onclick="() => ShowIconDetails(icon)">
+                <button class="icon-tile col-lg-1 col-md-2 col-sm-3 mb-3 text-center text-light" title="@icon.Code" @onclick="() => ShowIconDetails(icon)">
 
                     <div style="font-size: 300%; line-height: 1;"><Blazicon Svg="icon.Icon"></Blazicon></div>
-                    <div class="text-muted small text-truncate">@icon.Name</div>
+                    <div class="small text-truncate icon-name">@icon.Name</div>
                 </button>
             </Virtualize>
         </div>
@@ -50,10 +50,10 @@
 {
     <div id="active-icon-modal" class="modal fade show" style="display: block;" tabindex="-1">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content bg-dark text-light">
                     <div class="modal-header">
                     @ActiveIconDisplayName
-                    <button type="button" class="btn-close" aria-label="Close" @onclick="HideModal"></button>
+                    <button type="button" class="btn-close btn-close-white" aria-label="Close" @onclick="HideModal"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">

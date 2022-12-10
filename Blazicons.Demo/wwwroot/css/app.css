@@ -8,9 +8,67 @@ html, body {
   min-height: 100vh;
 }
 
+.app-loader {
+  height: 100vh;
+  background-color: #222;
+  color: #fff;
+}
+.app-loader h1 {
+  font-size: 13vw;
+}
+.app-loader div {
+  font-size: 3.5vw;
+  color: #bd9de1;
+}
+@media (min-width: 600px) {
+  .app-loader h1 {
+    font-size: 11vw;
+  }
+  .app-loader div {
+    font-size: 2.5vw;
+  }
+}
+@media (min-width: 1024px) {
+  .app-loader h1 {
+    font-size: 7vw;
+  }
+  .app-loader div {
+    font-size: 1.5vw;
+  }
+}
+.app-loader svg {
+  fill: currentColor;
+  height: 1em;
+  width: 1em;
+  vertical-align: -0.125em;
+}
+.app-loader svg .flame {
+  animation-name: flaming;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes flaming {
+  0% {
+    fill: #bd9de1;
+  }
+  50% {
+    fill: #5c2d91;
+  }
+  100% {
+    fill: #bd9de1;
+  }
+}
+a {
+  color: #bd9de1;
+}
+a:hover {
+  color: #9c6cd2;
+}
+
 main {
-  min-height: 100vh;
-  max-height: 100vh;
+  min-height: calc(100vh - 3.3em);
+  max-height: calc(100vh - 3.3em);
   overflow-x: auto;
   overflow-y: hidden;
 }
@@ -37,6 +95,10 @@ main {
 
 h1:focus {
   outline: none;
+}
+
+:root {
+  --bs-primary-rgb: 92,45,145;
 }
 
 #blazor-error-ui {
@@ -77,7 +139,16 @@ h1:focus {
   border-color: transparent;
   border-radius: 0.375rem;
 }
+.icons-area .icon-tile .icon-name {
+  color: var(--bs-gray-500);
+}
 .icons-area .icon-tile:hover {
   border-color: rgba(0, 0, 0, 0.125);
-  background-color: #f8f9fa;
+  background-color: var(--bs-gray-800);
+}
+.icons-area .icon-tile:hover svg {
+  fill: #decef0;
+}
+.icons-area .icon-tile:hover .icon-name {
+  color: #decef0;
 }
