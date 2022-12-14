@@ -1,5 +1,4 @@
-﻿@import url("open-iconic/font/css/open-iconic-bootstrap.min.css");
-html, body {
+﻿html, body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   min-height: 100vh;
 }
@@ -143,12 +142,18 @@ h1:focus {
   color: var(--bs-gray-500);
 }
 .icons-area .icon-tile:hover {
-  border-color: rgba(0, 0, 0, 0.125);
-  background-color: var(--bs-gray-800);
+  border-color: #5c2d91;
+  background-color: #bd9de1;
+  color: #000;
 }
 .icons-area .icon-tile:hover svg {
-  fill: #decef0;
+  fill: #000;
 }
 .icons-area .icon-tile:hover .icon-name {
-  color: #decef0;
+  color: #333;
+}
+
+.btn-check:checked + .font-library-selection, .font-library-selection:hover {
+  border-color: #5c2d91;
+  background-color: #bd9de1;
 }
