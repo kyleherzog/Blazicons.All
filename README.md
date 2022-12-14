@@ -39,11 +39,16 @@ Each parameter in a Blazor component has a rendering cost. Since it might be des
 
 As a result, a Blazicon only has one parameter, `Svg`. The `Svg` parameter is a special type of `SvgIcon`.  These `SvgIcon` types are defined in the specific icon library Blazicon files.
 
-## Customization
-A Blazicon is designed to be displayed with the size and color determined by current font and color settings.  Therefore, the size and color can easily be changed by adjusting the CSS `font-size` and `color` style attributes of the containing element.
+## Styling
+A Blazicon is designed to be displayed with the size and color determined by current font size and color settings.  Therefore, the size and color can easily be changed by adjusting the CSS `font-size` and `color` style attributes of the containing element.
 
 ```html
 <div style="font-size 200%; color: #f00;">
     <Blazicon Svg="Ionicon.ShapesSharp"></Blazicon>
 </div>
+```
+
+Styling helper methods also are available on the `SvgIcon` object.
+```html
+<Blazicon Svg='Ionicon.ShapesSharp.WithColor("#f00).WithSize("200%")'></Blazicon>
 ```
