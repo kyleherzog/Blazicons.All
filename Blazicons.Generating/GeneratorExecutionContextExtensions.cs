@@ -66,7 +66,7 @@ public static class GeneratorExecutionContextExtensions
 
     private static string? GetViewBox(string svg)
     {
-        var regex = new Regex("<svg.*viewBox=\"([^\"]*)\"");
+        var regex = new Regex("<svg.*viewBox=\"([^\"]*)\"", RegexOptions.Singleline);
         var match = regex.Match(svg);
         if (match.Success)
         {
@@ -81,6 +81,9 @@ public static class GeneratorExecutionContextExtensions
         svg = Regex.Replace(svg, @"<\/?svg[^>]*>", string.Empty);
         svg = Regex.Replace(svg, @"<!--(.*?)-->", string.Empty);
         svg = Regex.Replace(svg, "fill=\"[^\"]*\"", string.Empty);
+        svg = Regex.Replace(svg, "stroke:#000;", "stroke:currentColor;");
+        svg = Regex.Replace(svg, "stroke=\"#000\"", "stroke=\"currentColor\"");
+
         svg = svg.Replace("\n", string.Empty).Replace("\r", string.Empty);
         return svg.Replace("\\", "\\\\").Replace("\"", "\\\"").Trim();
     }
