@@ -154,6 +154,7 @@ h1:focus {
 }
 
 .btn-check:checked + .font-library-selection, .font-library-selection:hover {
-  border-color: #5c2d91;
-  background-color: #bd9de1;
+  border-color: #5c2d91 !important;
+  background-color: #bd9de1 !important;
+  color: #000 !important;
 }
