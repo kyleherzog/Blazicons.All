@@ -72,6 +72,10 @@ main {
   overflow-y: hidden;
 }
 
+.tagline {
+  vertical-align: 0.1em;
+}
+
 .navbar {
   line-height: 1;
 }
