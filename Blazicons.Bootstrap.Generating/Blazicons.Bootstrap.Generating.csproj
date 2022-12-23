@@ -8,6 +8,7 @@
     <Version>0.1</Version>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Blazicons.Generating" Version="0.1.1-alpha" />
     <PackageReference Include="Microsoft.VisualStudio.Threading" Version="17.3.44" PrivateAssets="all" GeneratePathProperty="true" />
     <PackageReference Include="Microsoft.VisualStudio.Validation" Version="17.0.58" PrivateAssets="all" GeneratePathProperty="true" />
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.3">
@@ -21,9 +22,6 @@
   <PropertyGroup>
     <GetTargetPathDependsOn>$(GetTargetPathDependsOn);GetDependencyTargetPaths</GetTargetPathDependsOn>
   </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Blazicons.Generating\Blazicons.Generating.csproj" />
-  </ItemGroup>
   <Target Name="GetDependencyTargetPaths">
     <ItemGroup>
       <TargetPathWithTargetPlatformMoniker Include="$(PKGCodeCasing)\lib\netstandard1.0\*.dll" IncludeRuntimeDependency="false" />
