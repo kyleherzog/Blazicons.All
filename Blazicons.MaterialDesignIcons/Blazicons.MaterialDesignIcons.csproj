@@ -16,8 +16,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-    <ProjectReference Include="..\Blazicons.MaterialDesignIcons.Generating\Blazicons.MaterialDesignIcons.Generating.csproj"  OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-    <ProjectReference Include="..\Blazicons\Blazicons.csproj" />
+        <PackageReference Include="Blazicons" Version="0.1.3-alpha" />
+    </ItemGroup>
+
+    <ItemGroup>
+    <ProjectReference Include="..\Blazicons.MaterialDesignIcons.Generating\Blazicons.MaterialDesignIcons.Generating.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
 </Project>
